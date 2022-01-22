@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react"
 
-import "./index.module.scss"
+import styles from "./index.module.scss"
 
 const Settings = () => {
     const apiUrl = "https://opentdb.com/api_category.php"
@@ -40,7 +40,7 @@ const Settings = () => {
  
     if (!loading) {
         return (
-        <div>
+        <div className={styles.card}>
             <div>
                     <h2>Select category:</h2>
                     <select value={questionCategory} onChange={handleCategoryChange}>

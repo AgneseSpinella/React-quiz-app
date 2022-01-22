@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import styles from "./App.module.scss"
 
 import Settings from './components/Setting';
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.app}>
       <Settings/>
     </div>
   );
