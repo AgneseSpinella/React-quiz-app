@@ -1,5 +1,6 @@
 import  { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import FetchButton from "../FetchButton"
 
 import styles from "./index.module.scss"
 
@@ -99,7 +100,7 @@ const Settings = () => {
                         type="number" min="1"></input>
             </div>
             <div>
-                <button className={styles.btnStart} type="submit"> Start</button>
+            <FetchButton text="Get started!" />
             </div>
         </div>
         );
