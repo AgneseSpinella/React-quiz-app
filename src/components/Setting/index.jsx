@@ -1,40 +1,63 @@
-import react, { useState, useEffect } from "react"
+import  { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 
 import styles from "./index.module.scss"
 
 const Settings = () => {
     const apiUrl = "https://opentdb.com/api_category.php"
-    const [loading, setLoading] = useState(false);
+    
     const [options, setOptions] = useState("")
-    const [questionCategory, setQuestionCategory] = useState("")
-    const [questionDifficulty, setQuestionDifficulty] = useState("")
-    const [questionType, setQuestionType] = useState("");
-	const [numberOfQuestions, setNumberOfQuestions] = useState(10);
 
+    const loading = useSelector(state=> state.options.loading);
+    const questionCategory = useSelector(state=> state.options.question_category);
+    const questionDifficulty = useSelector(state=> state.options.question_difficulty);
+    const questionType = useSelector(state=> state.options.question_type);
+	const questionAmount = useSelector(state => state.options.amount_of_questions)
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
+        const handleLoadingChange = value => {
+            dispatch({
+                type: "CHANGE_LOADING",
+                loading: value
+            })
+        }
+        handleLoadingChange(true);
         fetch(apiUrl)
             .then((res) => res.json())
             .then((response) => {
-                setLoading(false);
+                handleLoadingChange(false);
                 setOptions(response.trivia_categories);
             })
-    }, [setOptions]);
+    }, [setOptions, dispatch]);
 
     const handleCategoryChange = (e) => {
-        setQuestionCategory(e.target.value)
+        dispatch({
+            type: "CHANGE_CATEGORY",
+            value: e.target.value
+        })
     }
 
    const handleDifficultyChange = (e) => {
-        setQuestionDifficulty(e.target.value)
+    dispatch({
+        type: "CHANGE_DIFFICULTY",
+        value: e.target.value
+    })
     }
 
     const handleTypeChange = (e) => {
-        setQuestionType(e.target.value)
+        dispatch({
+            type: "CHANGE_TYPE",
+            value: e.target.value
+        })
     }
 
     const handleNumberChange = (e) => {
-        setNumberOfQuestions(e.target.value)
+        dispatch({
+            type: "CHANGE_AMOUNT",
+            value: e.target.value
+        })
     }
 
  
@@ -72,8 +95,11 @@ const Settings = () => {
             </div>
             <div>
                     <h2>Amount of questions:</h2>       
-                        <input value={numberOfQuestions} onChange={handleNumberChange}
+                        <input value={questionAmount} onChange={handleNumberChange} inputMode="numeric"
                         type="number" min="1"></input>
+            </div>
+            <div>
+                <button className={styles.btnStart} type="submit"> Start</button>
             </div>
         </div>
         );
