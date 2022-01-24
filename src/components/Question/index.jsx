@@ -1,5 +1,5 @@
-
-import styles from "./index.module.scss"
+import "./index.css"
+import styles from "../Setting/index.module.scss"
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -71,7 +71,7 @@ const Question = () => {
           type: 'SET_INDEX',
           index: questionIndex + 1,
         })
-      }, 2500)
+      }, 1200)
     }
   }
 
@@ -94,18 +94,20 @@ const Question = () => {
   }
 
   return (
-    <div>
-      <p>Question {questionIndex + 1}</p>
-      <h3>{question.question}</h3>
-      <ul>
-        {options.map((option, i) => (
-          <li key={i} onClick={handleListItemClick} className={getClass(option)}>
-            {option}
-          </li>
-        ))}
-      </ul>
-      <div>
-        Score: {score} / {questions.length}
+    <div className={styles.card}>
+      <div className="question">
+        <p>Question {questionIndex + 1} of {questions.length}</p>
+        <h3>{question.question}</h3>
+        <ul className="list">
+          {options.map((option, i) => (
+            <li key={i} onClick={handleListItemClick} className={getClass(option)}>
+              {option}
+            </li>
+          ))}
+        </ul>
+        <div>
+          <p>Score: {score} </p>
+        </div>
       </div>
     </div>
   )
