@@ -9,7 +9,7 @@ const Settings = () => {
     
     const [options, setOptions] = useState("")
 
-    const loading = useSelector(state=> state.options.loading);
+  
     const questionCategory = useSelector(state=> state.options.question_category);
     const questionDifficulty = useSelector(state=> state.options.question_difficulty);
     const questionType = useSelector(state=> state.options.question_type);
@@ -62,12 +62,12 @@ const Settings = () => {
     }
 
  
-    if (!loading) {
+    
         return (
         <div className={styles.card}>
             <div>
                     <h2>Select category:</h2>
-                    <select value={questionCategory} onChange={handleCategoryChange}>
+                    <select value={questionCategory} onChange={handleCategoryChange} disabled>
                         <option>All</option>
                         {options &&
                             options.map((option) => (
@@ -79,7 +79,7 @@ const Settings = () => {
             </div>
             <div>
                     <h2>Select difficulty:</h2>       
-                    <select value={questionDifficulty} onChange={handleDifficultyChange}>
+                    <select value={questionDifficulty} onChange={handleDifficultyChange} disabled>
                         <option value="" key="diff-0">All</option>
                         <option value="easy" key="diff-1">Easy</option>
                         <option value="medium" key="diff-2">Medium</option>
@@ -88,7 +88,7 @@ const Settings = () => {
             </div>
             <div>
                     <h2>Question type:</h2>       
-                    <select value={questionType} onChange={handleTypeChange}>
+                    <select value={questionType} onChange={handleTypeChange} disabled>
                         <option value="" key="type-0"> All </option>
                         <option value="multiple" key="type-1"> Multiple choice</option>
                         <option value="boolean" key="type-2"> True or False</option>
@@ -96,19 +96,14 @@ const Settings = () => {
             </div>
             <div>
                     <h2>Amount of questions:</h2>       
-                        <input value={questionAmount} onChange={handleNumberChange} inputMode="numeric"
+                        <input value={questionAmount} onChange={handleNumberChange} inputMode="numeric" disabled
                         type="number" min="1"></input>
             </div>
             <div>
-            <FetchButton text="Get started!" />
+            <FetchButton text="Let's start!" />
             </div>
         </div>
         );
-    } else {
-        <p>
-            loading...
-        </p>
-    }
 }
 
 export default Settings;

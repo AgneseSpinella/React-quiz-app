@@ -68,6 +68,8 @@ function FetchButton(props) {
   }
 
   return <button onClick={handleQuery}>{props.text}</button>
+  
+  
 }
 export default FetchButton
 

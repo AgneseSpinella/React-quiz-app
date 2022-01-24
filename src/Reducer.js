@@ -4,7 +4,7 @@ const initState = {
       question_category: ``,
       question_difficulty: ``,
       question_type: ``,
-      amount_of_questions: 50,
+      amount_of_questions: 7,
     },
     questions: [],
     index: 0,
