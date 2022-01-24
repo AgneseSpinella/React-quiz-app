@@ -64,8 +64,7 @@ const Settings = () => {
  
     
         return (
-        <div className={styles.card}>
-            <div>
+            <div className={styles.card}>
                     <h2>Select category:</h2>
                     <select value={questionCategory} onChange={handleCategoryChange} disabled>
                         <option>All</option>
@@ -76,8 +75,6 @@ const Settings = () => {
                                 </option>
                             ))}
                     </select>
-            </div>
-            <div>
                     <h2>Select difficulty:</h2>       
                     <select value={questionDifficulty} onChange={handleDifficultyChange} disabled>
                         <option value="" key="diff-0">All</option>
@@ -85,24 +82,20 @@ const Settings = () => {
                         <option value="medium" key="diff-2">Medium</option>
                         <option value="hard" key="diff-3">Hard</option>
                     </select>        
-            </div>
-            <div>
                     <h2>Question type:</h2>       
                     <select value={questionType} onChange={handleTypeChange} disabled>
                         <option value="" key="type-0"> All </option>
                         <option value="multiple" key="type-1"> Multiple choice</option>
                         <option value="boolean" key="type-2"> True or False</option>
                     </select>        
-            </div>
-            <div>
                     <h2>Amount of questions:</h2>       
                         <input value={questionAmount} onChange={handleNumberChange} inputMode="numeric" disabled
                         type="number" min="1"></input>
+                <div className={styles.btnStart}>
+                <FetchButton text="Let's start!"  />
+                </div>
             </div>
-            <div>
-            <FetchButton text="Let's start!" />
-            </div>
-        </div>
+
         );
 }
 
