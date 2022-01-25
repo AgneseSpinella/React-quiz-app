@@ -92,7 +92,7 @@ const Settings = () => {
                         <input value={questionAmount} onChange={handleNumberChange} inputMode="numeric" disabled
                         type="number" min="1"></input>
                 <div className={styles.btnStart}>
-                <FetchButton text="Let's start!"  />
+                <FetchButton text="Let's start!"  id="buttone"/>
                 </div>
             </div>
 

@@ -1,3 +1,4 @@
+import styles from "../Setting/index.module.scss"
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import FetchButton from '../FetchButton'
@@ -33,10 +34,10 @@ const FinalScreen = () => {
   }
 
   return (
-    <div>
+    <div className={styles.card}>
       <h3>Final Score: {score}</h3>
       <button onClick={replay}>Try again</button>
-      <FetchButton text="Fetch new questions" />
+      <FetchButton text="Ask me new questions" />
       <button onClick={settings}>Back to settings</button>
     </div>
   )

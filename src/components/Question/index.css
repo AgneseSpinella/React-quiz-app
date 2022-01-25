@@ -6,22 +6,36 @@
   flex-direction: column;
   align-items: center;
 }
-
+.list{
+  max-height: 400px;
+}
 .question p {
   margin-left: -250px;
 }
 
+h3{
+  border: 2px inset rgba(231, 144, 4, 0.815);;
+  padding: 10px;
+  display: inline-block;
+  font-size: 30px;
+  background: rgba(255, 255, 255, 0.3);;
+}
 
 li{
-  font-size: 30px;
+  background: rgba(255, 255, 255, 0.3);
+  border: inset;
+  border-radius: 10px;
+  display: inline block;
+  font-size: 20px;
   width: 200px;
   list-style: none;
-  padding: 5px;
+  padding: 10px;
+  margin: 15px;
 }
 
 li:hover {
-    background-color: #772139;
-    color: white;
+    text-decoration-line: underline;
+    background: rgba(231, 144, 4, 0.815);
     cursor: pointer;
   }
   li.correct {
